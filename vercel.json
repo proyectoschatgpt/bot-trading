@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "app.py",
@@ -7,6 +6,13 @@
     }
   ],
   "routes": [
-    { "src": "/", "dest": "app.py" }
-  ]
+    { "handle": "filesystem" },
+    { "src": "/run_notebook", "dest": "/app/run_notebook" }
+  ],
+  "env": {
+    "GOOGLE_APPLICATION_CREDENTIALS": "$GOOGLE_APPLICATION_CREDENTIALS",
+    "COLAB_NOTEBOOK_ID": "$COLAB_NOTEBOOK_ID",
+    "COLAB_API_KEY": "$COLAB_API_KEY",
+    "OUTPUT_NOTEBOOK_FOLDER": "$OUTPUT_NOTEBOOK_FOLDER"
+  }
 }
